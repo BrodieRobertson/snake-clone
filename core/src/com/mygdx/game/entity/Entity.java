@@ -2,6 +2,8 @@ package com.mygdx.game.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -44,6 +46,30 @@ public abstract class Entity {
     }
 
     /**
+     * Gets the width of the entity
+     * @return The width
+     */
+    public float getWidth() {
+        return sprite.getWidth();
+    }
+
+    /**
+     * Gets the height of the entity
+     * @return The height
+     */
+    public float getHeight() {
+        return sprite.getHeight();
+    }
+
+    /**
+     * Sets the rotation of the entity using degree
+     * @param degree The degree
+     */
+    public void setRotation(float degree) {
+        sprite.setRotation(degree);
+    }
+
+    /**
      * Amount to translate x by
      * @param x The x translation amount
      */
@@ -69,26 +95,31 @@ public abstract class Entity {
     }
 
     /**
-     * Gets the width of the entity
-     * @return The width
+     * Checks if a set of points is touching this entity
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @return True if touching, false otherwise
      */
-    public float getWidth() {
-        return sprite.getWidth();
+    public boolean isTouching(float x, float y) {
+        return sprite.getBoundingRectangle().contains(x, y);
     }
 
     /**
-     * Gets the height of the entity
-     * @return The height
+     * Checks if a rectangle collider is overlapping this entity
+     * @param collider The collider
+     * @return True if overlapping, false otherwise
      */
-    public float getHeight() {
-        return sprite.getHeight();
+    public boolean isTouching(Rectangle collider) {
+        return collider != null && sprite.getBoundingRectangle().overlaps(collider);
     }
 
     /**
      * Renders the entity to the screen
      * @param batch The sprite batch
      */
-    public abstract void render(Sprite batch);
+    public void render(SpriteBatch batch, float alpha) {
+        sprite.draw(batch, alpha);
+    }
 
     /**
      * Updates the entities state
