@@ -1,6 +1,7 @@
 package com.mygdx.game.entity;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.util.GameDataProvider;
 
 import java.util.LinkedList;
 
@@ -13,6 +14,13 @@ public class Snake {
      */
     private LinkedList<SnakeBody> body;
 
+    /**
+     * Snake constructor with no parameters, initializes body to values set in GameDataProvider
+     */
+    public Snake() {
+        this(GameDataProvider.INITIAL_SNAKE_X, GameDataProvider.INITIAL_SNAKE_Y,
+                GameDataProvider.INITIAL_SNAKE_LENGTH);
+    }
     /**
      * Snake constructor
      * @param x The x of the head
