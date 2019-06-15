@@ -15,6 +15,13 @@ public abstract class Entity {
      */
     private Sprite sprite;
 
+    /**
+     * Entity constructor with no parameters
+     */
+    public Entity() {
+        sprite = new Sprite();
+    }
+
     public Entity(Texture texture, float x, float y) {
         this.sprite = new Sprite(texture);
         sprite.setX(x);
@@ -59,6 +66,14 @@ public abstract class Entity {
      */
     public float getHeight() {
         return sprite.getHeight();
+    }
+
+    /**
+     * Sets the texture of the sprite
+     * @param texture The texture
+     */
+    public void setTexture(Texture texture) {
+        this.sprite.setTexture(texture);
     }
 
     /**
@@ -116,6 +131,7 @@ public abstract class Entity {
     /**
      * Renders the entity to the screen
      * @param batch The sprite batch
+     * @param alpha The alpha level of the entity
      */
     public void render(SpriteBatch batch, float alpha) {
         sprite.draw(batch, alpha);

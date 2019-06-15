@@ -6,11 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * Abstract super class representing a screen
  */
 public abstract class Screen {
-
-    public Screen() {
-
-    }
-
     /**
      * Renders the screen
      */
