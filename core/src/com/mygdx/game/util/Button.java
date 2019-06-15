@@ -96,6 +96,20 @@ public abstract class Button {
     }
 
     /**
+     * Sets the collider fot this button
+     * @param x The x coordiante
+     * @param y The y coordinate
+     * @param width The width
+     * @param height The height
+     */
+    public void setCollider(float x, float y, float width, float height) {
+        this.collider.x = x;
+        this.collider.y = y;
+        this.collider.width = width;
+        this.collider.height = height;
+    }
+
+    /**
      * Sets the x coordinate of the button
      * @param x The x coordinate
      */
