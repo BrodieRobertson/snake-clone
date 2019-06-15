@@ -122,6 +122,22 @@ public abstract class Button {
     }
 
     /**
+     * The width of the button
+     * @param width The width
+     */
+    public void setWidth(float width) {
+        this.collider.width = width;
+    }
+
+    /**
+     * The height of the button
+     * @param height The height
+     */
+    public void setHeight(float height) {
+        this.collider.height = height;
+    }
+
+    /**
      * Checks if a set of points is touching this button
      * @param x The x coordinate
      * @param y The y coordinate
