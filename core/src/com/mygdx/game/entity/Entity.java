@@ -138,6 +138,14 @@ public abstract class Entity {
     }
 
     /**
+     * Renders the entity to the screen
+     * @param batch The sprite batch
+     */
+    public void render(SpriteBatch batch) {
+        sprite.draw(batch);
+    }
+
+    /**
      * Updates the entities state
      * @param elapsedTime The time elapsed since the previous frame
      */
