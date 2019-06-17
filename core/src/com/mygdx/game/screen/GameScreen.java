@@ -1,6 +1,10 @@
 package com.mygdx.game.screen;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.entity.Direction;
+import com.mygdx.game.entity.Snake;
 import com.mygdx.game.util.GameDataProvider;
 
 /**
@@ -39,7 +43,21 @@ public class GameScreen extends Screen {
      */
     @Override
     public void update(float elapsedTime) {
+        dataProvider.getSnake().update(elapsedTime);
 
+        Snake snake = dataProvider.getSnake();
+        if(Gdx.input.isKeyJustPressed(Input.Keys.W)) {
+            snake.setDirection(Direction.UP);
+        }
+        else if(Gdx.input.isKeyJustPressed(Input.Keys.A)) {
+            snake.setDirection(Direction.LEFT);
+        }
+        else if(Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+            snake.setDirection(Direction.DOWN);
+        }
+        else if(Gdx.input.isKeyJustPressed(Input.Keys.D)) {
+            snake.setDirection(Direction.RIGHT);
+        }
     }
 
     /**
