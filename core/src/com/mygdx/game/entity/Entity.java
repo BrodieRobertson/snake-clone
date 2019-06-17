@@ -85,6 +85,22 @@ public abstract class Entity {
     }
 
     /**
+     * Sets the x coordinate for the entity
+     * @param x The x coordinate
+     */
+    public void setX(float x) {
+        sprite.setX(x);
+    }
+
+    /**
+     * Sets the y coordinate for the entity
+     * @param y The y coordinate
+     */
+    public void setY(float y) {
+        sprite.setY(y);
+    }
+
+    /**
      * Amount to translate x by
      * @param x The x translation amount
      */

@@ -1,5 +1,6 @@
 package com.mygdx.game.util;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.game.entity.Snake;
 
 /**
@@ -12,13 +13,21 @@ public class GameDataProvider {
      */
     private static GameDataProvider instance;
     /**
+     * Number of cells in a row
+     */
+    public static final int ROW_CELLS = 100;
+    /**
+     * Number of cells in a column
+     */
+    public static final int COL_CELLS = 100;
+    /**
      * Width of movement grid
      */
-    public static final int GRID_WIDTH = 16;
+    public static final int GRID_WIDTH = Gdx.graphics.getWidth()/ROW_CELLS;
     /**
      * Height of movement grid
      */
-    public static final int GRID_HEIGHT = 16;
+    public static final int GRID_HEIGHT = Gdx.graphics.getWidth()/COL_CELLS;
     /**
      * The initial length of the snake
      */
