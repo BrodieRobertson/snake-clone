@@ -15,7 +15,7 @@ public class SnakeBody extends Entity {
      */
     public SnakeBody(float x, float y) {
         super(new Texture(Gdx.files.internal("snake_body.jpg")), x, y,
-                GameDataProvider.GRID_WIDTH, GameDataProvider.GRID_HEIGHT);
+                GameDataProvider.CELL_WIDTH, GameDataProvider.CELL_HEIGHT);
     }
 
     /**

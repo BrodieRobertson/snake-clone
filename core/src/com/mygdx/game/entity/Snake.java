@@ -31,7 +31,7 @@ public class Snake {
         body = new LinkedList<SnakeBody>();
 
         for(int i = 0; i < length; ++i) {
-            body.add(new SnakeBody(x + i, y));
+            body.add(new SnakeBody(x + (i *GameDataProvider.CELL_WIDTH), y));
         }
     }
 

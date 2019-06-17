@@ -23,11 +23,11 @@ public class GameDataProvider {
     /**
      * Width of movement grid
      */
-    public static final int GRID_WIDTH = Gdx.graphics.getWidth()/ROW_CELLS;
+    public static final int CELL_WIDTH = Gdx.graphics.getWidth()/ROW_CELLS;
     /**
      * Height of movement grid
      */
-    public static final int GRID_HEIGHT = Gdx.graphics.getWidth()/COL_CELLS;
+    public static final int CELL_HEIGHT = Gdx.graphics.getWidth()/COL_CELLS;
     /**
      * The initial length of the snake
      */
@@ -35,11 +35,11 @@ public class GameDataProvider {
     /**
      * The initial x of the snake
      */
-    public static final int INITIAL_SNAKE_X = 0;
+    public static final int INITIAL_SNAKE_X = CELL_WIDTH * 20;
     /**
      * The initial y of the snake
      */
-    public static final int INITIAL_SNAKE_Y = 0;
+    public static final int INITIAL_SNAKE_Y = CELL_HEIGHT * 20;
     /**
      * The players character
      */
