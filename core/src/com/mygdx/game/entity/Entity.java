@@ -29,6 +29,20 @@ public abstract class Entity {
     }
 
     /**
+     * Entity constructor
+     *
+     * @param texture The texture of the entity
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @param width The width
+     * @param height The height
+     */
+    public Entity(Texture texture, float x, float y, float width, float height) {
+        this(texture, x, y);
+        sprite.setSize(width, height);
+    }
+
+    /**
      * Gets the x coordinate of the entity
      * @return The x coordinates
      */

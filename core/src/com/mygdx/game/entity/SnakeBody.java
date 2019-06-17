@@ -2,6 +2,7 @@ package com.mygdx.game.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.util.GameDataProvider;
 
 /**
  * Represents one piece of the snake body
@@ -13,7 +14,8 @@ public class SnakeBody extends Entity {
      * @param y The y coordinate
      */
     public SnakeBody(float x, float y) {
-        super(new Texture(Gdx.files.internal("")), x, y);
+        super(new Texture(Gdx.files.internal("snake_body.jpg")), x, y,
+                GameDataProvider.GRID_WIDTH, GameDataProvider.GRID_HEIGHT);
     }
 
     /**

@@ -15,11 +15,11 @@ public class GameDataProvider {
     /**
      * Number of cells in a row
      */
-    public static final int ROW_CELLS = 100;
+    public static final int ROW_CELLS = 50;
     /**
      * Number of cells in a column
      */
-    public static final int COL_CELLS = 100;
+    public static final int COL_CELLS = 50;
     /**
      * Width of movement grid
      */

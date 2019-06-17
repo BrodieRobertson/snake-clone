@@ -9,7 +9,7 @@ public abstract class Screen {
     /**
      * Renders the screen
      */
-    public abstract void render(SpriteBatch batch);
+    public abstract void render(SpriteBatch entityBatch, SpriteBatch uiBatch);
 
     /**
      * Updates the state of the screen

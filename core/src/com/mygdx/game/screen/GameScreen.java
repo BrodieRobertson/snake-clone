@@ -1,19 +1,35 @@
 package com.mygdx.game.screen;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.util.GameDataProvider;
 
 /**
  * Class representing the screen shown during general game player
  */
 public class GameScreen extends Screen {
     /**
+     * The game data provider
+     */
+    GameDataProvider dataProvider;
+
+    /**
+     * Game Screen constructor
+     */
+    public GameScreen() {
+        dataProvider = GameDataProvider.instance();
+    }
+
+    /**
      * Renders the screen
      *
-     * @param batch
+     * @param entityBatch Batch used to display the entities
+     * @param uiBatch Batch used to display the ui
      */
     @Override
-    public void render(SpriteBatch batch) {
-
+    public void render(SpriteBatch entityBatch, SpriteBatch uiBatch) {
+        entityBatch.begin();
+        dataProvider.getSnake().render(entityBatch);
+        entityBatch.end();
     }
 
     /**
