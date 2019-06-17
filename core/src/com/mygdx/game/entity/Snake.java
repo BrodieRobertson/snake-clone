@@ -84,10 +84,10 @@ public class Snake {
      * @param direction The new direction
      */
     public void setDirection(Direction direction) {
-        if((direction == Direction.UP && this.direction != Direction.DOWN) ||
+        if(direction != this.direction && ((direction == Direction.UP && this.direction != Direction.DOWN) ||
                 (direction == Direction.DOWN && this.direction != Direction.UP) ||
                 (direction == Direction.RIGHT && this.direction != Direction.LEFT) ||
-                (direction == Direction.LEFT && this.direction != Direction.RIGHT)) {
+                (direction == Direction.LEFT && this.direction != Direction.RIGHT))) {
             previousDirection = this.direction;
             this.direction = direction;
         }

@@ -15,19 +15,19 @@ public class GameDataProvider {
     /**
      * Number of cells in a row
      */
-    public static final int ROW_CELLS = 50;
+    public static final int ROW_CELLS = 30;
     /**
      * Number of cells in a column
      */
-    public static final int COL_CELLS = 50;
+    public static final int COL_CELLS = 30;
     /**
      * Width of movement grid
      */
-    public static final int CELL_WIDTH = Gdx.graphics.getWidth()/ROW_CELLS;
+    public static final int CELL_WIDTH = Gdx.graphics.getHeight()/ROW_CELLS;
     /**
      * Height of movement grid
      */
-    public static final int CELL_HEIGHT = Gdx.graphics.getWidth()/COL_CELLS;
+    public static final int CELL_HEIGHT = Gdx.graphics.getHeight()/COL_CELLS;
     /**
      * The initial length of the snake
      */
