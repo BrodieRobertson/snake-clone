@@ -126,6 +126,7 @@ public class Snake {
                     break;
             }
 
+            // Fix location if changing direction
             if((direction == Direction.DOWN && (previousDirection == Direction.RIGHT || previousDirection == Direction.LEFT))
                     || direction == Direction.UP && (previousDirection == Direction.LEFT || previousDirection == Direction.RIGHT)) {
                 newHead.setX(body.getFirst().getX());
@@ -133,6 +134,22 @@ public class Snake {
             else {
                 newHead.setY(body.getFirst().getY());
             }
+
+            // Spit out head on other side of map
+            if(newHead.getX() < 0) {
+                newHead.setX(GameDataProvider.MAP_WIDTH);
+            }
+            else if(newHead.getX() > GameDataProvider.MAP_WIDTH) {
+                newHead.setX(0);
+            }
+
+            if(newHead.getY() < 0) {
+                newHead.setY(GameDataProvider.MAP_HEIGHT);
+            }
+            else if(newHead.getY() > GameDataProvider.MAP_HEIGHT) {
+                newHead.setY(0);
+            }
+            System.out.println(newHead.getY());
             body.addFirst(newHead);
             movementCounter = MOVEMENT_DELAY;
         }

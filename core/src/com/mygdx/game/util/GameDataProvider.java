@@ -29,6 +29,14 @@ public class GameDataProvider {
      */
     public static final int CELL_HEIGHT = Gdx.graphics.getHeight()/COL_CELLS;
     /**
+     * Width of the map
+     */
+    public static final int MAP_WIDTH = CELL_WIDTH * (ROW_CELLS - 1);
+    /**
+     * Height of the map
+     */
+    public static final int MAP_HEIGHT = CELL_HEIGHT * (COL_CELLS - 1);
+    /**
      * The initial length of the snake
      */
     public static final int INITIAL_SNAKE_LENGTH = 3;
