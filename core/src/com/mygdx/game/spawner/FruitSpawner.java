@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.entity.Fruit;
 import com.mygdx.game.util.GameDataProvider;
 
+/**
+ * Controls the spawning of fruit
+ */
 public class FruitSpawner {
     /**
      * The current round
@@ -36,7 +39,11 @@ public class FruitSpawner {
     /**
      * The time until the next spawn
      */
-    private float spawnTime;
+    private float currentSpawnTime;
+    /**
+     * The number of fruit yet to be eaten
+     */
+    private int uneatenFruit;
     /**
      * If the spawner is spawning any fruit
      */
@@ -51,7 +58,6 @@ public class FruitSpawner {
      */
     public FruitSpawner() {
         this(GameDataProvider.STARTING_ROUND);
-
     }
 
     public FruitSpawner(int startingRound) {
@@ -66,7 +72,8 @@ public class FruitSpawner {
     public void newRound() {
         int temp = STARTING_FRUIT + (FRUIT_INCREASE_PER_ROUND * round);
         currentRoundFruit = (temp < MAX_FRUIT ? temp : MAX_FRUIT);
-        spawnTime = SPAWN_TIME;
+        currentSpawnTime = SPAWN_TIME;
+        uneatenFruit = currentRoundFruit;
         nextFruit = 0;
     }
 
@@ -101,20 +108,59 @@ public class FruitSpawner {
     }
 
     /**
+     * If the spawner is expended for this round
+     * @return True if expended, false otherwise
+     */
+    public boolean isExpended() {
+        return nextFruit >= currentRoundFruit;
+    }
+
+    /**
+     * If all of the fruit has been ate
+     * @return True if all the fruit have been ate, false otherwise
+     */
+    public boolean allAte() {
+        return isExpended() && uneatenFruit == 0;
+    }
+
+    /**
+     * Cleans up a fruit after being eaten
+     * @param index The index of the fruit that was eaten
+     */
+    public void eatFruit(int index) {
+        fruits[index].setAte(true);
+        --uneatenFruit;
+    }
+
+    /**
      * Updates the state of the spawner
      * @param elapsedTime The time elapsed since the previous frame
      */
     public void update(float elapsedTime) {
+        if(isSpawning) {
+            currentSpawnTime -= elapsedTime;
+            if(currentSpawnTime <= 0) {
+                // add new fruit
 
+                ++nextFruit;
+                if(nextFruit >= currentRoundFruit) {
+                    stop();
+                }
+                currentSpawnTime = SPAWN_TIME;
+            }
+        }
     }
-
 
     /**
      * Renders the fruit to the screen
      * @param batch The sprite batch
      */
     public void render(SpriteBatch batch) {
-
+        for(int i = 0; i < currentRoundFruit; ++i) {
+            if(fruits[i] != null && !fruits[i].isAte()) {
+                fruits[i].render(batch);
+            }
+        }
     }
 
     public void dispose() {

@@ -14,6 +14,10 @@ public abstract class Fruit extends Entity {
      * Score acquired by eating this fruit
      */
     private int scoreValue;
+    /**
+     * If this fruit has been ate
+     */
+    private boolean isAte;
 
     /**
      * Fruit constructor
@@ -27,6 +31,23 @@ public abstract class Fruit extends Entity {
         super(texture, x, y);
         this.lengthValue = lengthValue;
         this.scoreValue = scoreValue;
+        isAte = false;
+    }
+
+    /**
+     * Gets if this fruit has been ate
+     * @return If this fruit has been ate
+     */
+    public boolean isAte(){
+        return isAte;
+    }
+
+    /**
+     * Sets if this fruit has been ate
+     * @param ate If this fruit has been ate
+     */
+    public void setAte(boolean ate) {
+        isAte = ate;
     }
 
     /**
