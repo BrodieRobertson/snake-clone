@@ -149,7 +149,7 @@ public class Snake {
             else if(newHead.getY() > GameDataProvider.MAP_HEIGHT) {
                 newHead.setY(0);
             }
-            System.out.println(newHead.getY());
+
             body.addFirst(newHead);
             movementCounter = MOVEMENT_DELAY;
         }

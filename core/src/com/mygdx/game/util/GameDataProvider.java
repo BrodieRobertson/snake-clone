@@ -49,6 +49,10 @@ public class GameDataProvider {
      */
     public static final int INITIAL_SNAKE_Y = CELL_HEIGHT * 20;
     /**
+     * The starting round
+     */
+    public static final int STARTING_ROUND = 1;
+    /**
      * The players character
      */
     private Snake snake;
