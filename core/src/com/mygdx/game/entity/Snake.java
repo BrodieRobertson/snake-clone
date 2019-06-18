@@ -93,6 +93,21 @@ public class Snake {
     }
 
     /**
+     * Checks if a set of points is touching any part of the snake
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @return True if touching, false otherwise
+     */
+    public boolean isTouching(float x, float y) {
+        for(SnakeBody sb : body) {
+            if(sb.isTouching(x, y)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Renders the snake to the screen
      * @param batch The sprite batch
      */

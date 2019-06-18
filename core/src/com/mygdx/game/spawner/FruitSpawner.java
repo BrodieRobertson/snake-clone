@@ -124,6 +124,20 @@ public class FruitSpawner {
     }
 
     /**
+     * Checks if the a set of points is touching any of the fruit
+     * @param x The x coordinate
+     * @param y The y coordinate
+     */
+    public boolean isTouching(float x, float y) {
+        for(int i = 0; i < currentRoundFruit; ++i) {
+            if(fruits[i] != null && fruits[i].isTouching(x, y)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * If the spawner is expended for this round
      * @return True if expended, false otherwise
      */
@@ -160,6 +174,8 @@ public class FruitSpawner {
             if(currentSpawnTime <= 0) {
                 float x;
                 float y;
+
+                // Generate random locations until an empty one is found
                 do {
                     x = random.nextInt(GameDataProvider.ROW_CELLS);
                     y = random.nextInt(GameDataProvider.COL_CELLS);

@@ -102,7 +102,7 @@ public class GameDataProvider {
      * @return If the cell is empty
      */
     public boolean cellEmpty(float x, float y) {
-        return true;
+        return !snake.isTouching(x, y) && !spawner.isTouching(x, y);
     }
 
     /**
