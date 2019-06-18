@@ -7,15 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.screen.GameScreen;
 import com.mygdx.game.screen.Screen;
+import com.mygdx.game.util.GameDataProvider;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SnakeGame extends ApplicationAdapter {
-    /**
-     * The current state of the game
-     */
-    private GameState state;
 	/**
      * Map of the available screens
      */
@@ -34,8 +31,6 @@ public class SnakeGame extends ApplicationAdapter {
 		entityBatch = new SpriteBatch();
 		uiBatch = new SpriteBatch();
 
-		state = GameState.PLAYING;
-
 		screens = new HashMap<GameState, Screen>();
 		screens.put(GameState.PLAYING, new GameScreen());
 	}
@@ -45,7 +40,7 @@ public class SnakeGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		Screen currentScreen = screens.get(state);
+		Screen currentScreen = screens.get(GameDataProvider.instance().getState());
 		currentScreen.update(Gdx.graphics.getDeltaTime());
 		currentScreen.render(entityBatch, uiBatch);
 	}

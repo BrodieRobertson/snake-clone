@@ -33,6 +33,7 @@ public class GameScreen extends Screen {
     public void render(SpriteBatch entityBatch, SpriteBatch uiBatch) {
         entityBatch.begin();
         dataProvider.getSnake().render(entityBatch);
+        dataProvider.getSpawner().render(entityBatch);
         entityBatch.end();
     }
 
@@ -44,7 +45,14 @@ public class GameScreen extends Screen {
     @Override
     public void update(float elapsedTime) {
         dataProvider.getSnake().update(elapsedTime);
+        dataProvider.getSpawner().update(elapsedTime);
+        handleInput();
+    }
 
+    /**
+     * Handles the user input
+     */
+    private void handleInput() {
         Snake snake = dataProvider.getSnake();
         if(Gdx.input.isKeyJustPressed(Input.Keys.W)) {
             snake.setDirection(Direction.UP);

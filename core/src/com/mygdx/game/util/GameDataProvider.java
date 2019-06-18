@@ -1,7 +1,9 @@
 package com.mygdx.game.util;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.game.GameState;
 import com.mygdx.game.entity.Snake;
+import com.mygdx.game.spawner.FruitSpawner;
 
 /**
  * Singleton class to hold game data relevant to multiple classes where passing it around would
@@ -52,11 +54,18 @@ public class GameDataProvider {
      * The starting round
      */
     public static final int STARTING_ROUND = 1;
-
+    /**
+     * The current state of the game
+     */
+    private GameState state;
     /**
      * The players character
      */
     private Snake snake;
+    /**
+     * Handles the spawning of the fruit
+     */
+    private FruitSpawner spawner;
 
     /**
      * Private GameDataProvider constructor
@@ -69,7 +78,10 @@ public class GameDataProvider {
      * Resets the values held by the GameDataProvider
      */
     public void initialize() {
+        state = GameState.PLAYING;
+        spawner = new FruitSpawner(STARTING_ROUND);
         snake = new Snake();
+        spawner.start();
     }
 
     /**
@@ -84,11 +96,45 @@ public class GameDataProvider {
     }
 
     /**
+     * Checks if a cell of the map is empty
+     * @param x The grid x, not the pixel x
+     * @param y The grid y, not the pixel y
+     * @return If the cell is empty
+     */
+    public boolean cellEmpty(float x, float y) {
+        return true;
+    }
+
+    /**
      * Gets the snake
      * @return The snake
      */
     public Snake getSnake() {
         return snake;
+    }
+
+    /**
+     * Gets the game state
+     * @return The game state
+     */
+    public GameState getState() {
+        return state;
+    }
+
+    /**
+     * Gets the fruit spawner
+     * @return The fruit spawner
+     */
+    public FruitSpawner getSpawner() {
+        return spawner;
+    }
+
+    /**
+     * Sets the game state
+     * @param state The new game state
+     */
+    public void setState(GameState state) {
+        this.state = state;
     }
 
     /**

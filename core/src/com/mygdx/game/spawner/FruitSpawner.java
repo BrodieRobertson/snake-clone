@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.entity.fruit.Fruit;
 import com.mygdx.game.util.GameDataProvider;
 
+import java.util.Random;
+
 /**
  * Controls the spawning of fruit
  */
@@ -15,7 +17,7 @@ public class FruitSpawner {
     /**
      * The delay between each spawn
      */
-    private static final float SPAWN_TIME = 3f;
+    private static final float SPAWN_TIME = 0.2f;
     /**
      * The maximum number of fruit
      */
@@ -52,6 +54,14 @@ public class FruitSpawner {
      * The fruit
      */
     private Fruit[] fruits;
+    /**
+     * Used to generate a new random location for a fruit
+     */
+    private Random random;
+    /**
+     * Used to generate fruit
+     */
+    private FruitFactory factory;
 
     /**
      * FruitType Constructor with no parameters, the starting round is defined by the GameDataProvider
@@ -60,9 +70,15 @@ public class FruitSpawner {
         this(GameDataProvider.STARTING_ROUND);
     }
 
+    /**
+     * FruitSpawner constructor
+     * @param startingRound The round to start from
+     */
     public FruitSpawner(int startingRound) {
         round = startingRound;
         fruits = new Fruit[MAX_FRUIT];
+        random = new Random();
+        factory = new FruitFactory();
         newRound();
     }
 
@@ -142,7 +158,14 @@ public class FruitSpawner {
         if(isSpawning) {
             currentSpawnTime -= elapsedTime;
             if(currentSpawnTime <= 0) {
-                // add new fruit
+                float x;
+                float y;
+                do {
+                    x = random.nextInt(GameDataProvider.ROW_CELLS);
+                    y = random.nextInt(GameDataProvider.COL_CELLS);
+                } while (!GameDataProvider.instance().cellEmpty(x, y));
+
+                fruits[nextFruit] = factory.nextFruit(x * GameDataProvider.CELL_WIDTH, y * GameDataProvider.CELL_HEIGHT);
 
                 ++nextFruit;
                 if(nextFruit >= currentRoundFruit) {
