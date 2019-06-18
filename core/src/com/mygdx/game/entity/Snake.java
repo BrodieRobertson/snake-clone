@@ -1,9 +1,8 @@
 package com.mygdx.game.entity;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.Direction;
 import com.mygdx.game.util.GameDataProvider;
-
-import org.omg.PortableInterceptor.DISCARDING;
 
 import java.util.LinkedList;
 

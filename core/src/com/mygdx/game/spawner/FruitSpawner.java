@@ -54,7 +54,7 @@ public class FruitSpawner {
     private Fruit[] fruits;
 
     /**
-     * Fruit Constructor with no parameters, the starting round is defined by the GameDataProvider
+     * FruitType Constructor with no parameters, the starting round is defined by the GameDataProvider
      */
     public FruitSpawner() {
         this(GameDataProvider.STARTING_ROUND);

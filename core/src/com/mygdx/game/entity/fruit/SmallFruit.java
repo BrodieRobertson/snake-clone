@@ -13,7 +13,7 @@ public class SmallFruit extends Fruit {
      */
     public static final int SCORE_VALUE = 3;
     /**
-     * Fruit constructor
+     * FruitType constructor
      *
      * @param x           The x coordinate of the fruit
      * @param y           The y coordinate of the fruit

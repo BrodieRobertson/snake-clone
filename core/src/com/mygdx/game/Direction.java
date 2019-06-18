@@ -1,4 +1,4 @@
-package com.mygdx.game.entity;
+package com.mygdx.game;
 
 /**
  * The directions that a snake can move

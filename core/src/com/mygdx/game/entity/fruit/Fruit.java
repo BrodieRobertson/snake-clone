@@ -22,7 +22,7 @@ public abstract class Fruit extends Entity {
     private boolean isAte;
 
     /**
-     * Fruit constructor
+     * FruitType constructor
      * @param texture The texture of the fruit
      * @param x The x coordinate of the fruit
      * @param y The y coordinate of the fruit

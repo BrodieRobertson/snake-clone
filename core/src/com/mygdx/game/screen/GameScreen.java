@@ -3,7 +3,7 @@ package com.mygdx.game.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.entity.Direction;
+import com.mygdx.game.Direction;
 import com.mygdx.game.entity.Snake;
 import com.mygdx.game.util.GameDataProvider;
 
