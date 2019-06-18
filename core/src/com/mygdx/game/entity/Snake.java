@@ -147,6 +147,9 @@ public class Snake {
         movementCounter -= elapsedTime;
         handleMovement();
         handleCollisions();
+        if(getLength() < 2) {
+            GameDataProvider.instance().setState(GameState.GAME_OVER);
+        }
     }
 
     /**
@@ -229,7 +232,12 @@ public class Snake {
         else if(growthRemaining < 0) {
             body.removeLast();
             ++growthRemaining;
-            return body.removeLast();
+            if(getLength() > 1) {
+                return body.removeLast();
+            }
+            else {
+                return body.getLast();
+            }
         }
         return null;
     }
