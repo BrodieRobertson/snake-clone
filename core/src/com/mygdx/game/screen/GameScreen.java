@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Direction;
+import com.mygdx.game.GameState;
 import com.mygdx.game.entity.Snake;
 import com.mygdx.game.util.GameDataProvider;
 
@@ -32,8 +33,8 @@ public class GameScreen extends Screen {
     @Override
     public void render(SpriteBatch entityBatch, SpriteBatch uiBatch) {
         entityBatch.begin();
-        dataProvider.getSnake().render(entityBatch);
         dataProvider.getSpawner().render(entityBatch);
+        dataProvider.getSnake().render(entityBatch);
         entityBatch.end();
     }
 
@@ -47,6 +48,11 @@ public class GameScreen extends Screen {
         dataProvider.getSnake().update(elapsedTime);
         dataProvider.getSpawner().update(elapsedTime);
         handleInput();
+
+        // End round if all fruit has been ate
+        if(dataProvider.getSpawner().allAte()) {
+            dataProvider.setState(GameState.ROUND_OVER);
+        }
     }
 
     /**

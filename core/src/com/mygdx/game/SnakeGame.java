@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.screen.GameOverScreen;
 import com.mygdx.game.screen.GameScreen;
+import com.mygdx.game.screen.RoundOverScreen;
 import com.mygdx.game.screen.Screen;
 import com.mygdx.game.util.GameDataProvider;
 
@@ -34,8 +35,8 @@ public class SnakeGame extends ApplicationAdapter {
 
 		screens = new HashMap<GameState, Screen>();
 		screens.put(GameState.PLAYING, new GameScreen());
-
 		screens.put(GameState.GAME_OVER, new GameOverScreen());
+		screens.put(GameState.ROUND_OVER, new RoundOverScreen());
 	}
 
 	@Override
