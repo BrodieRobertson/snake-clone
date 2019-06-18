@@ -40,6 +40,10 @@ public class Snake {
      * The score of this snake
      */
     private int score;
+    /**
+     * The growth remaining from eating fruit
+     */
+    private int growthRemaining;
 
     /**
      * Snake constructor with no parameters, initializes body to values set in GameDataProvider
@@ -149,50 +153,85 @@ public class Snake {
      * Handles the movement
      */
     private void handleMovement() {
-        if(movementCounter <= 0) {
-            SnakeBody newHead = body.removeLast();
-            switch (direction) {
-                case UP:
-                    newHead.setY(body.getFirst().getY() + GameDataProvider.CELL_HEIGHT);
-                    break;
-                case DOWN:
-                    newHead.setY(body.getFirst().getY() - GameDataProvider.CELL_HEIGHT);
-                    break;
-                case LEFT:
-                    newHead.setX(body.getFirst().getX() - GameDataProvider.CELL_WIDTH);
-                    break;
-                case RIGHT:
-                    newHead.setX(body.getFirst().getX() + GameDataProvider.CELL_WIDTH);
-                    break;
-            }
+        SnakeBody newHead = selectNewHead();
+        if(newHead != null) {
+            moveHead(newHead);
+        }
+    }
 
-            // Fix location if changing direction
-            if((direction == Direction.DOWN && (previousDirection == Direction.RIGHT || previousDirection == Direction.LEFT))
-                    || direction == Direction.UP && (previousDirection == Direction.LEFT || previousDirection == Direction.RIGHT)) {
-                newHead.setX(body.getFirst().getX());
+    private SnakeBody selectNewHead() {
+        if(movementCounter <= 0) {
+            if(growthRemaining == 0) {
+                 return body.removeLast();
             }
             else {
-                newHead.setY(body.getFirst().getY());
+                return handleGrowth();
             }
-
-            // Spit out head on other side of map
-            if(newHead.getX() < 0) {
-                newHead.setX(GameDataProvider.MAP_WIDTH);
-            }
-            else if(newHead.getX() > GameDataProvider.MAP_WIDTH) {
-                newHead.setX(0);
-            }
-
-            if(newHead.getY() < 0) {
-                newHead.setY(GameDataProvider.MAP_HEIGHT);
-            }
-            else if(newHead.getY() > GameDataProvider.MAP_HEIGHT) {
-                newHead.setY(0);
-            }
-
-            body.addFirst(newHead);
-            movementCounter = MOVEMENT_DELAY;
         }
+        return null;
+    }
+
+    /**
+     * Handles movement when the snake does not need to grow
+     */
+    private void moveHead(SnakeBody newHead) {
+        switch (direction) {
+            case UP:
+                newHead.setY(body.getFirst().getY() + GameDataProvider.CELL_HEIGHT);
+                break;
+            case DOWN:
+                newHead.setY(body.getFirst().getY() - GameDataProvider.CELL_HEIGHT);
+                break;
+            case LEFT:
+                newHead.setX(body.getFirst().getX() - GameDataProvider.CELL_WIDTH);
+                break;
+            case RIGHT:
+                newHead.setX(body.getFirst().getX() + GameDataProvider.CELL_WIDTH);
+                break;
+        }
+
+        // Fix location if changing direction
+        if((direction == Direction.DOWN && (previousDirection == Direction.RIGHT || previousDirection == Direction.LEFT))
+                || direction == Direction.UP && (previousDirection == Direction.LEFT || previousDirection == Direction.RIGHT)) {
+            newHead.setX(body.getFirst().getX());
+        }
+        else {
+            newHead.setY(body.getFirst().getY());
+        }
+
+        // Spit out head on other side of map
+        if(newHead.getX() < 0) {
+            newHead.setX(GameDataProvider.MAP_WIDTH);
+        }
+        else if(newHead.getX() > GameDataProvider.MAP_WIDTH) {
+            newHead.setX(0);
+        }
+
+        if(newHead.getY() < 0) {
+            newHead.setY(GameDataProvider.MAP_HEIGHT);
+        }
+        else if(newHead.getY() > GameDataProvider.MAP_HEIGHT) {
+            newHead.setY(0);
+        }
+
+        body.addFirst(newHead);
+        movementCounter = MOVEMENT_DELAY;
+    }
+
+    /**
+     * Handles the growth of the snake
+     */
+    private SnakeBody handleGrowth() {
+        if(growthRemaining > 0) {
+            --growthRemaining;
+            return new SnakeBody(0, 0);
+        }
+        else if(growthRemaining < 0) {
+            body.removeLast();
+            ++growthRemaining;
+            return body.removeLast();
+        }
+        return null;
     }
 
     /**
@@ -204,6 +243,7 @@ public class Snake {
 
         if(fruit != null) {
             score += fruit.getScoreValue();
+            growthRemaining += fruit.getScoreValue();
         }
 
         // Check if the the snake is colliding with itself
