@@ -36,7 +36,7 @@ public class GameDataProvider {
      * Height of the map
      */
     public static final int MAP_HEIGHT = CELL_HEIGHT * (COL_CELLS - 1);
-    /**
+    /**l
      * The initial length of the snake
      */
     public static final int INITIAL_SNAKE_LENGTH = 3;
@@ -52,6 +52,7 @@ public class GameDataProvider {
      * The starting round
      */
     public static final int STARTING_ROUND = 1;
+
     /**
      * The players character
      */

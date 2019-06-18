@@ -1,7 +1,7 @@
 package com.mygdx.game.spawner;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.entity.Fruit;
+import com.mygdx.game.entity.fruit.Fruit;
 import com.mygdx.game.util.GameDataProvider;
 
 /**
@@ -128,8 +128,10 @@ public class FruitSpawner {
      * @param index The index of the fruit that was eaten
      */
     public void eatFruit(int index) {
-        fruits[index].setAte(true);
-        --uneatenFruit;
+        if(!fruits[index].isAte()) {
+            fruits[index].setAte(true);
+            --uneatenFruit;
+        }
     }
 
     /**

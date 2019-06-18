@@ -1,6 +1,8 @@
-package com.mygdx.game.entity;
+package com.mygdx.game.entity.fruit;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.entity.Entity;
+import com.mygdx.game.util.GameDataProvider;
 
 /**
  * Abstract class to represent the kinds of fruit
@@ -28,7 +30,7 @@ public abstract class Fruit extends Entity {
      * @param scoreValue The score value gained
      */
     public Fruit(Texture texture, float x, float y, int lengthValue, int scoreValue) {
-        super(texture, x, y);
+        super(texture, x, y, GameDataProvider.CELL_WIDTH, GameDataProvider.CELL_HEIGHT);
         this.lengthValue = lengthValue;
         this.scoreValue = scoreValue;
         isAte = false;
@@ -64,5 +66,10 @@ public abstract class Fruit extends Entity {
      */
     public int getScoreValue() {
         return scoreValue;
+    }
+
+    @Override
+    public void update(float elapsedTime) {
+
     }
 }
