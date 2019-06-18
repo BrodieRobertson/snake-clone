@@ -129,7 +129,7 @@ public class FruitSpawner {
      * @param y The y coordinate
      */
     public boolean isTouching(float x, float y) {
-        for(int i = 0; i < currentRoundFruit; ++i) {
+        for(int i = 0; i < nextFruit; ++i) {
             if(fruits[i] != null && fruits[i].isTouching(x, y)) {
                 return true;
             }
@@ -155,13 +155,18 @@ public class FruitSpawner {
 
     /**
      * Cleans up a fruit after being eaten
-     * @param index The index of the fruit that was eaten
+     * @param x The x coordinate of the fruit
+     * @param y The y coordinate of the fruit
      */
-    public void eatFruit(int index) {
-        if(!fruits[index].isAte()) {
-            fruits[index].setAte(true);
-            --uneatenFruit;
+    public Fruit eatFruit(float x, float y) {
+        for(int i = 0; i < nextFruit; ++i) {
+            if(fruits[i].getX() == x && fruits[i].getY() == y && !fruits[i].isAte()) {
+                fruits[i].setAte(true);
+                --uneatenFruit;
+                return fruits[i];
+            }
         }
+        return null;
     }
 
     /**

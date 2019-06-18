@@ -83,6 +83,14 @@ public abstract class Entity {
     }
 
     /**
+     * Gets the collider for this entity
+     * @return The collider
+     */
+    public Rectangle getCollider() {
+        return (sprite != null ? sprite.getBoundingRectangle() : null);
+    }
+
+    /**
      * Sets the texture of the sprite
      * @param texture The texture
      */
@@ -156,6 +164,15 @@ public abstract class Entity {
      */
     public boolean isTouching(Rectangle collider) {
         return collider != null && sprite.getBoundingRectangle().overlaps(collider);
+    }
+
+    /**
+     * Checks if this entity is touching another entity
+     * @param entity The other entity
+     * @return True if touching, false otherwise
+     */
+    public boolean isTouching(Entity entity) {
+        return entity != null && sprite.getBoundingRectangle().overlaps(entity.getCollider());
     }
 
     /**

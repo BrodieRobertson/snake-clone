@@ -2,6 +2,8 @@ package com.mygdx.game.entity;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Direction;
+import com.mygdx.game.GameState;
+import com.mygdx.game.entity.fruit.Fruit;
 import com.mygdx.game.util.GameDataProvider;
 
 import java.util.LinkedList;
@@ -31,13 +33,13 @@ public class Snake {
      */
     private Direction previousDirection;
     /**
-     * Direction change since last update
-     */
-    private boolean directionChanged;
-    /**
      * The snake body parts
      */
     private LinkedList<SnakeBody> body;
+    /**
+     * The score of this snake
+     */
+    private int score;
 
     /**
      * Snake constructor with no parameters, initializes body to values set in GameDataProvider
@@ -76,6 +78,22 @@ public class Snake {
         direction = STARTING_DIRECTION;
         previousDirection = direction;
         movementCounter = MOVEMENT_DELAY;
+    }
+
+    /**
+     * Gets the score of this snake
+     * @return The score
+     */
+    public int getScore() {
+        return score;
+    }
+
+    /**
+     * Gets the length of this snake
+     * @return The length
+     */
+    public int getLength() {
+        return body.size();
     }
 
     /**
@@ -123,6 +141,14 @@ public class Snake {
      */
     public void update(float elapsedTime) {
         movementCounter -= elapsedTime;
+        handleMovement();
+        handleCollisions();
+    }
+
+    /**
+     * Handles the movement
+     */
+    private void handleMovement() {
         if(movementCounter <= 0) {
             SnakeBody newHead = body.removeLast();
             switch (direction) {
@@ -166,6 +192,25 @@ public class Snake {
 
             body.addFirst(newHead);
             movementCounter = MOVEMENT_DELAY;
+        }
+    }
+
+    /**
+     * Handles the collisions with other entities
+     */
+    private void handleCollisions() {
+        SnakeBody head = body.getFirst();
+        Fruit fruit = GameDataProvider.instance().getSpawner().eatFruit(head.getX(), head.getY());
+
+        if(fruit != null) {
+            score += fruit.getScoreValue();
+        }
+
+        // Check if the the snake is colliding with itself
+        for(int i = 1; i < body.size(); ++i) {
+            if(head.isTouching(body.get(i))) {
+                GameDataProvider.instance().setState(GameState.GAME_OVER);
+            }
         }
     }
 
