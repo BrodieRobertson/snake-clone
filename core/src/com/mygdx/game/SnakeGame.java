@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.screen.GameOverScreen;
 import com.mygdx.game.screen.GameScreen;
@@ -22,16 +23,30 @@ public class SnakeGame extends ApplicationAdapter {
 	/**
 	 * The batch used to render entites
 	 */
-	SpriteBatch entityBatch;
+	private SpriteBatch entityBatch;
 	/**
 	 * The batch used to render the ui
 	 */
-	SpriteBatch uiBatch;
+	private SpriteBatch uiBatch;
+    /**
+     * The title font
+     */
+	private BitmapFont titleFont;
 
-	@Override
+    /**
+     * Gets the title font
+     * @return The title font
+     */
+    public BitmapFont getTitleFont() {
+        return titleFont;
+    }
+
+    @Override
 	public void create () {
 		entityBatch = new SpriteBatch();
 		uiBatch = new SpriteBatch();
+
+
 
 		screens = new HashMap<GameState, Screen>();
 		screens.put(GameState.PLAYING, new GameScreen());

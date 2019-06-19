@@ -1,8 +1,21 @@
 package com.mygdx.game.screen;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.util.Text;
 
 public class RoundOverScreen extends Screen {
+    /**
+     * The text showing round over
+     */
+    private Text roundOverText;
+
+    public RoundOverScreen() {
+        super();
+        float w = Gdx.graphics.getWidth();
+        float h = Gdx.graphics.getHeight();
+
+    }
     /**
      * Renders the screen
      *
