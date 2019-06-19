@@ -10,6 +10,7 @@ import com.mygdx.game.screen.GameOverScreen;
 import com.mygdx.game.screen.GameScreen;
 import com.mygdx.game.screen.RoundOverScreen;
 import com.mygdx.game.screen.Screen;
+import com.mygdx.game.util.AssetProvider;
 import com.mygdx.game.util.GameDataProvider;
 
 import java.util.HashMap;
@@ -46,7 +47,8 @@ public class SnakeGame extends ApplicationAdapter {
 		entityBatch = new SpriteBatch();
 		uiBatch = new SpriteBatch();
 
-
+		// Let initial assets load
+		AssetProvider.instance();
 
 		screens = new HashMap<GameState, Screen>();
 		screens.put(GameState.PLAYING, new GameScreen());

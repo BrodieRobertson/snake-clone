@@ -202,6 +202,5 @@ public abstract class Entity {
      * Disposes of the entities resources
      */
     public void dispose() {
-        sprite.getTexture().dispose();
     }
 }

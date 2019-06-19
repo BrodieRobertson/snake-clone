@@ -1,7 +1,7 @@
 package com.mygdx.game.entity.fruit;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.util.AssetProvider;
 
 public class SmallFruit extends Fruit {
     /**
@@ -19,6 +19,6 @@ public class SmallFruit extends Fruit {
      * @param y           The y coordinate of the fruit
      */
     public SmallFruit(float x, float y) {
-        super(new Texture(Gdx.files.internal("small_fruit.jpg")), x, y, LENGTH_VALUE, SCORE_VALUE);
+        super(AssetProvider.instance().getAsset(AssetProvider.SMALL_FRUIT, Texture.class), x, y, LENGTH_VALUE, SCORE_VALUE);
     }
 }

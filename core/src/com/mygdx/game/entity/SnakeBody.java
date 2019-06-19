@@ -1,7 +1,7 @@
 package com.mygdx.game.entity;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.util.AssetProvider;
 import com.mygdx.game.util.GameDataProvider;
 
 /**
@@ -14,7 +14,7 @@ public class SnakeBody extends Entity {
      * @param y The y coordinate
      */
     public SnakeBody(float x, float y) {
-        super(new Texture(Gdx.files.internal("snake_body.jpg")), x, y,
+        super(AssetProvider.instance().getAsset(AssetProvider.SNAKE_BODY, Texture.class), x, y,
                 GameDataProvider.CELL_WIDTH, GameDataProvider.CELL_HEIGHT);
     }
 

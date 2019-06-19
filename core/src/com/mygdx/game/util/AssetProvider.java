@@ -2,12 +2,13 @@ package com.mygdx.game.util;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class AssetProvider {
     /**
      * Instance of the asset provider
      */
-    private AssetProvider instance;
+    private static AssetProvider instance;
     /**
      * The manager object
      */
@@ -28,6 +29,10 @@ public class AssetProvider {
      * Path to the bad fruit
      */
     public static final String BAD_FRUIT = "bad_fruit.jpg";
+    /**
+     * Path to the font
+     */
+    public static final String FONT = "good_neighbors.fnt";
 
     /**
      * AssetProvider constructor
@@ -38,13 +43,15 @@ public class AssetProvider {
         manager.load(SMALL_FRUIT, Texture.class);
         manager.load(BIG_FRUIT, Texture.class);
         manager.load(BAD_FRUIT, Texture.class);
+        manager.load(FONT, BitmapFont.class);
+        manager.finishLoading();
     }
 
     /**
      * Gets the instance of the AssetProvider
      * @return The instance
      */
-    public AssetProvider instance() {
+    public static AssetProvider instance() {
         if(instance == null) {
             instance = new AssetProvider();
         }
