@@ -1,5 +1,6 @@
 package com.mygdx.game.util;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -197,7 +198,7 @@ public abstract class Button {
      */
     public void update(float elapsedTime, boolean checkTouch, float x, float y) {
         if(checkTouch) {
-            isDown = collider.contains(x, y);
+            isDown = isTouching(x, Gdx.graphics.getHeight() - y);
         }
     }
 

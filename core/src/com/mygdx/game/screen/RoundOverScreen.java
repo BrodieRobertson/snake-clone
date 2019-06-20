@@ -3,8 +3,10 @@ package com.mygdx.game.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.GameState;
 import com.mygdx.game.util.AssetProvider;
 import com.mygdx.game.util.Button;
+import com.mygdx.game.util.GameDataProvider;
 import com.mygdx.game.util.Text;
 import com.mygdx.game.util.TextButton;
 
@@ -72,10 +74,32 @@ public class RoundOverScreen extends Screen {
     @Override
     public void update(float elapsedTime) {
         boolean checkTouch = Gdx.input.isTouched();
+        GameDataProvider.instance().setIsTouched(checkTouch);
+        boolean wasTouched = GameDataProvider.instance().wasTouched();
+
         int touchX = Gdx.input.getX();
         int touchY = Gdx.input.getY();
 
-        buttons[0].update(elapsedTime, checkTouch);
+        for(int i = 0; i < BUTTONS; ++i) {
+            buttons[i].update(elapsedTime, checkTouch, touchX, touchY);
+        }
+
+        // Don't check is buttons downs if checked last frame
+        if(!wasTouched) {
+            if(buttons[0].isDown()) {
+                GameDataProvider.instance().setState(GameState.PLAYING);
+            }
+
+            if(buttons[1].isDown()) {
+                GameDataProvider.instance().setState(GameState.MAIN_MENU);
+            }
+
+            if(buttons[2].isDown()) {
+                System.out.println("Here");
+                Gdx.app.exit();
+            }
+        }
+
     }
 
     /**
@@ -83,6 +107,9 @@ public class RoundOverScreen extends Screen {
      */
     @Override
     public void dispose() {
-
+        roundOverText.dispose();
+        for(Button b : buttons) {
+            b.dispose();
+        }
     }
 }

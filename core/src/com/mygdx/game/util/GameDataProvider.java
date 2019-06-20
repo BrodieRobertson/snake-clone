@@ -66,6 +66,14 @@ public class GameDataProvider {
      * Handles the spawning of the fruit
      */
     private FruitSpawner spawner;
+    /**
+     * If the game is touched
+     */
+    private boolean isTouched;
+    /**
+     * If the game was touched
+     */
+    private boolean wasTouched;
 
     /**
      * Private GameDataProvider constructor
@@ -106,6 +114,22 @@ public class GameDataProvider {
     }
 
     /**
+     * If the game is touched
+     * @return Is touched
+     */
+    public boolean isTouched() {
+        return isTouched;
+    }
+
+    /**
+     * If the game was touched
+     * @return Was touched
+     */
+    public boolean wasTouched() {
+        return wasTouched;
+    }
+
+    /**
      * Gets the snake
      * @return The snake
      */
@@ -135,6 +159,15 @@ public class GameDataProvider {
      */
     public void setState(GameState state) {
         this.state = state;
+    }
+
+    /**
+     * Sets if the game is touched
+     * @param isTouched If the game is touched
+     */
+    public void setIsTouched(boolean isTouched) {
+        this.wasTouched = this.isTouched;
+        this.isTouched = isTouched;
     }
 
     /**
