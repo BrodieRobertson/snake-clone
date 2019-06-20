@@ -24,6 +24,9 @@ public class GameOverScreen extends Screen {
      */
     private TextButton[] buttons;
 
+    /**
+     * GameOverScreen constructor
+     */
     public GameOverScreen() {
         super();
         float w = Gdx.graphics.getWidth();

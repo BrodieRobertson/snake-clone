@@ -52,6 +52,7 @@ public class RoundOverScreen extends Screen {
         buttons[2].setX(w/2 - buttons[2].getWidth()/2);
         buttons[2].setY(h/6);
     }
+
     /**
      * Renders the screen
      *
@@ -101,7 +102,6 @@ public class RoundOverScreen extends Screen {
                 Gdx.app.exit();
             }
         }
-
     }
 
     /**
