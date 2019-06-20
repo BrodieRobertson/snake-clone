@@ -96,7 +96,7 @@ public class MusicController {
      */
     public void play() {
         currentMusic.setLooping(loop);
-        currentMusic.stop();
+        currentMusic.play();
     }
 
     /**
