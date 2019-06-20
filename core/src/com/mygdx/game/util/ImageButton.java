@@ -58,18 +58,6 @@ public class ImageButton extends Button {
         this.setWidth(image.getWidth());
     }
 
-
-    /**
-     * Updates the state of the button
-     *
-     * @param elapsedTime The time elapsed since the previous frame
-     * @param checkTouch  Check if the button is touched
-     */
-    @Override
-    public void update(float elapsedTime, boolean checkTouch) {
-
-    }
-
     /**
      * Disposed of the button resources
      */

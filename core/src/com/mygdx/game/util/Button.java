@@ -12,6 +12,10 @@ public abstract class Button {
      * The collider for this button
      */
     private Rectangle collider;
+    /**
+     * If the button is down
+     */
+    private boolean isDown;
 
     /**
      * Button constructor, with no parameters
@@ -85,6 +89,14 @@ public abstract class Button {
      */
     public float getHeight() {
         return collider.height;
+    }
+
+    /**
+     * If the button is down
+     * @return is down
+     */
+    public boolean isDown() {
+        return isDown;
     }
 
     /**
@@ -170,7 +182,6 @@ public abstract class Button {
         return collider != null && this.collider.overlaps(collider);
     }
 
-
     /**
      * Renders the button to the screen
      * @param batch The batch
@@ -181,8 +192,14 @@ public abstract class Button {
      * Updates the state of the button
      * @param elapsedTime The time elapsed since the previous frame
      * @param checkTouch Check if the button is touched
+     * @param x The x touch coordinate
+     * @param y The y touch coordinate
      */
-    public abstract void update(float elapsedTime, boolean checkTouch);
+    public void update(float elapsedTime, boolean checkTouch, float x, float y) {
+        if(checkTouch) {
+            isDown = collider.contains(x, y);
+        }
+    }
 
     /**
      * Disposed of the button resources

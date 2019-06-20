@@ -71,7 +71,11 @@ public class RoundOverScreen extends Screen {
      */
     @Override
     public void update(float elapsedTime) {
+        boolean checkTouch = Gdx.input.isTouched();
+        int touchX = Gdx.input.getX();
+        int touchY = Gdx.input.getY();
 
+        buttons[0].update(elapsedTime, checkTouch);
     }
 
     /**
