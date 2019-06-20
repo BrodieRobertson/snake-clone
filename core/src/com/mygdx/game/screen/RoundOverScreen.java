@@ -24,6 +24,9 @@ public class RoundOverScreen extends Screen {
      */
     private TextButton[] buttons;
 
+    /**
+     * RoundOverScreen constructor
+     */
     public RoundOverScreen() {
         super();
         float w = Gdx.graphics.getWidth();
@@ -95,7 +98,6 @@ public class RoundOverScreen extends Screen {
             }
 
             if(buttons[2].isDown()) {
-                System.out.println("Here");
                 Gdx.app.exit();
             }
         }
