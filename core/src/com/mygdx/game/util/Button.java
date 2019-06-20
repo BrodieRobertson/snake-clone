@@ -200,6 +200,9 @@ public abstract class Button {
         if(checkTouch) {
             isDown = isTouching(x, Gdx.graphics.getHeight() - y);
         }
+        else {
+            isDown = false;
+        }
     }
 
     /**

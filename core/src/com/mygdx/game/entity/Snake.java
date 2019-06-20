@@ -1,5 +1,6 @@
 package com.mygdx.game.entity;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Direction;
 import com.mygdx.game.GameState;
@@ -51,9 +52,6 @@ public class Snake {
     public Snake() {
         this(GameDataProvider.INITIAL_SNAKE_X, GameDataProvider.INITIAL_SNAKE_Y,
                 GameDataProvider.INITIAL_SNAKE_LENGTH);
-        direction = STARTING_DIRECTION;
-        previousDirection = direction;
-        movementCounter = MOVEMENT_DELAY;
     }
 
     /**
@@ -63,6 +61,31 @@ public class Snake {
      * @param length The length of the snake
      */
     public Snake(float x, float y, int length) {
+        initialize(x, y, length);
+    }
+
+    /**
+     * Snake constructor
+     * @param body The body of the snake
+     * @param startingDirection The starting direction of the snake
+     */
+    public Snake(LinkedList<SnakeBody> body, Direction startingDirection) {
+        initialize(body, startingDirection);
+    }
+
+    /**
+     * Initializes the snake with the values provided by the GameDataProvider
+     */
+    public void initialize() {
+        initialize(GameDataProvider.INITIAL_SNAKE_X, GameDataProvider.INITIAL_SNAKE_Y,
+                GameDataProvider.INITIAL_SNAKE_LENGTH);
+    }
+    /**
+     * Initializes the snake
+     * @param x The x coordinate of the head
+     * @param y The y coordinate of the header
+     */
+    public void initialize(float x, float y, int length) {
         body = new LinkedList<SnakeBody>();
 
         for(int i = 0; i < length; ++i) {
@@ -71,17 +94,24 @@ public class Snake {
         direction = STARTING_DIRECTION;
         previousDirection = direction;
         movementCounter = MOVEMENT_DELAY;
+        score = 0;
+        growthRemaining = 0;
+        movementCounter = 0;
     }
 
     /**
-     * Snake constructor
+     * Initializes the snake
      * @param body The body of the snake
+     * @param startingDirection The starting direction
      */
-    public Snake(LinkedList<SnakeBody> body) {
+    public void initialize(LinkedList<SnakeBody> body, Direction startingDirection) {
         this.body = body;
-        direction = STARTING_DIRECTION;
+        direction = startingDirection;
         previousDirection = direction;
         movementCounter = MOVEMENT_DELAY;
+        score = 0;
+        growthRemaining = 0;
+        movementCounter = 0;
     }
 
     /**

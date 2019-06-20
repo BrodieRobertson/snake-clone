@@ -91,7 +91,9 @@ public class RoundOverScreen extends Screen {
         // Don't check is buttons downs if checked last frame
         if(!wasTouched) {
             if(buttons[0].isDown()) {
-                GameDataProvider.instance().setState(GameState.PLAYING);
+                GameDataProvider dataProvider = GameDataProvider.instance();
+                dataProvider.startNewRound();
+                dataProvider.setState(GameState.PLAYING);
             }
 
             if(buttons[1].isDown()) {

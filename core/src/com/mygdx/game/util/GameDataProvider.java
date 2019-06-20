@@ -130,6 +130,23 @@ public class GameDataProvider {
     }
 
     /**
+     * Starts the next round of the game
+     */
+    public void startNewRound() {
+        spawner.incrementRound();
+        spawner.start();
+    }
+
+    /**
+     * Starts a new game
+     */
+    public void startNewGame() {
+        spawner.setRound(STARTING_ROUND);
+        snake.initialize();
+        spawner.start();
+    }
+
+    /**
      * Gets the snake
      * @return The snake
      */

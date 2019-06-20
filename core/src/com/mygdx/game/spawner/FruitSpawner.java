@@ -25,7 +25,7 @@ public class FruitSpawner {
     /**
      * The starting fruit
      */
-    private static final int STARTING_FRUIT = 10;
+    private static final int STARTING_FRUIT = 1;
     /**
      * The fruit increase per round
      */
@@ -86,7 +86,7 @@ public class FruitSpawner {
      * Resets the spawner for the next round, automatically called when the round value is changed
      */
     public void newRound() {
-        int temp = STARTING_FRUIT + (FRUIT_INCREASE_PER_ROUND * round);
+        int temp = STARTING_FRUIT + (FRUIT_INCREASE_PER_ROUND * (round - 1));
         currentRoundFruit = (temp < MAX_FRUIT ? temp : MAX_FRUIT);
         currentSpawnTime = SPAWN_TIME;
         uneatenFruit = currentRoundFruit;
@@ -167,6 +167,15 @@ public class FruitSpawner {
             }
         }
         return null;
+    }
+
+    /**
+     * Sets the round to a specified round, ready to begin
+     * @param round The round
+     */
+    public void setRound(int round) {
+        this.round = round;
+        newRound();
     }
 
     /**

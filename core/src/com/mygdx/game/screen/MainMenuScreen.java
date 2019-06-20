@@ -85,6 +85,7 @@ public class MainMenuScreen extends Screen {
         // Don't check is buttons downs if checked last frame
         if(!wasTouched) {
             if(buttons[0].isDown()) {
+                GameDataProvider.instance().startNewGame();
                 GameDataProvider.instance().setState(GameState.PLAYING);
             }
 
