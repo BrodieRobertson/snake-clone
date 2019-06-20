@@ -174,6 +174,7 @@ public class Snake {
      * @param elapsedTime The time elapsed since the previous frame
      */
     public void update(float elapsedTime) {
+        System.out.println(body.getFirst().getY());
         movementCounter -= elapsedTime;
         handleMovement();
         handleCollisions();
@@ -233,18 +234,18 @@ public class Snake {
         }
 
         // Spit out head on other side of map
-        if(newHead.getX() < 0) {
-            newHead.setX(GameDataProvider.MAP_WIDTH);
+        if(newHead.getX() < GameDataProvider.MIN_X) {
+            newHead.setX(GameDataProvider.MAX_X);
         }
-        else if(newHead.getX() > GameDataProvider.MAP_WIDTH) {
-            newHead.setX(0);
+        else if(newHead.getX() > GameDataProvider.MAX_X) {
+            newHead.setX(GameDataProvider.MIN_X);
         }
 
-        if(newHead.getY() < 0) {
-            newHead.setY(GameDataProvider.MAP_HEIGHT);
+        if(newHead.getY() < GameDataProvider.MIN_Y) {
+            newHead.setY(GameDataProvider.MAX_Y);
         }
-        else if(newHead.getY() > GameDataProvider.MAP_HEIGHT) {
-            newHead.setY(0);
+        else if(newHead.getY() > GameDataProvider.MAX_Y) {
+            newHead.setY(GameDataProvider.MIN_Y);
         }
 
         body.addFirst(newHead);

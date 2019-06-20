@@ -33,23 +33,47 @@ public class GameDataProvider {
     /**
      * Width of the map
      */
-    public static final int MAP_WIDTH = CELL_WIDTH * (ROW_CELLS - 1);
+    public static final int MAP_WIDTH = CELL_WIDTH * ROW_CELLS;
     /**
      * Height of the map
      */
-    public static final int MAP_HEIGHT = CELL_HEIGHT * (COL_CELLS - 1);
-    /**l
+    public static final int MAP_HEIGHT = CELL_HEIGHT * COL_CELLS;
+    /**
+     * The x offset to center the game
+     */
+    public static final int X_OFFSET = (Gdx.graphics.getWidth() - MAP_WIDTH)/2;
+    /**
+     * The y offset to center the game
+     */
+    public static final int Y_OFFSET = (Gdx.graphics.getHeight() - MAP_HEIGHT)/2;
+    /**
+     * The minimum traversable x
+     */
+    public static final int MIN_X = X_OFFSET;
+    /**
+     * The maximum traversable x
+     */
+    public static final int MAX_X = MAP_WIDTH + X_OFFSET - CELL_WIDTH;
+    /**
+     * The minimum traversable y
+     */
+    public static final int MIN_Y = Y_OFFSET;
+    /**
+     * The maximum traverable x
+     */
+    public static final int MAX_Y = MAP_HEIGHT + Y_OFFSET - CELL_HEIGHT;
+    /**
      * The initial length of the snake
      */
     public static final int INITIAL_SNAKE_LENGTH = 3;
     /**
      * The initial x of the snake
      */
-    public static final int INITIAL_SNAKE_X = CELL_WIDTH * 20;
+    public static final int INITIAL_SNAKE_X = X_OFFSET + (CELL_WIDTH * 20);
     /**
      * The initial y of the snake
      */
-    public static final int INITIAL_SNAKE_Y = CELL_HEIGHT * 20;
+    public static final int INITIAL_SNAKE_Y = Y_OFFSET + (CELL_HEIGHT * 20);
     /**
      * The starting round
      */
@@ -86,6 +110,8 @@ public class GameDataProvider {
      * Resets the values held by the GameDataProvider
      */
     public void initialize() {
+        System.out.println(MIN_X);
+        System.out.println(MAX_Y);
         state = GameState.GAME_OVER;
         spawner = new FruitSpawner(STARTING_ROUND);
         snake = new Snake();

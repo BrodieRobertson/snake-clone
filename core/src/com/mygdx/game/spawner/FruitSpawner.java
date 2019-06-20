@@ -195,7 +195,8 @@ public class FruitSpawner {
                     y = random.nextInt(GameDataProvider.COL_CELLS);
                 } while (!GameDataProvider.instance().cellEmpty(x, y));
 
-                fruits[nextFruit] = factory.nextFruit(x * GameDataProvider.CELL_WIDTH, y * GameDataProvider.CELL_HEIGHT);
+                fruits[nextFruit] = factory.nextFruit(((GameDataProvider.ROW_CELLS -1) * GameDataProvider.CELL_WIDTH) + GameDataProvider.MIN_X,
+                        (y * GameDataProvider.CELL_HEIGHT) + GameDataProvider.MIN_Y);
 
                 ++nextFruit;
                 if(nextFruit >= currentRoundFruit) {
