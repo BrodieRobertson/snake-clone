@@ -37,6 +37,20 @@ public class Text {
     }
 
     /**
+     * Text constructor
+     * @param font The font of the text
+     * @param text The text
+     * @param x The x coordinate
+     * @param y The y cordinate
+     */
+    public Text(BitmapFont font, String text, float x, float y) {
+        this.layout = new GlyphLayout(font, text);
+        this.font = font;
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
      * Constructor for Text
      *
      * @param layout The text layout

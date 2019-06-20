@@ -78,7 +78,7 @@ public class GameDataProvider {
      * Resets the values held by the GameDataProvider
      */
     public void initialize() {
-        state = GameState.PLAYING;
+        state = GameState.ROUND_OVER;
         spawner = new FruitSpawner(STARTING_ROUND);
         snake = new Snake();
         spawner.start();

@@ -27,4 +27,12 @@ public class SnakeBody extends Entity {
     public void update(float elapsedTime) {
 
     }
+
+    /**
+     * Disposes of the entities resources
+     */
+    @Override
+    public void dispose() {
+
+    }
 }

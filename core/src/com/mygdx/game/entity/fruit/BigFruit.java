@@ -22,4 +22,12 @@ public class BigFruit extends Fruit {
     public BigFruit(float x, float y) {
         super(AssetProvider.instance().getAsset(AssetProvider.BIG_FRUIT, Texture.class), x, y, LENGTH_VALUE, SCORE_VALUE);
     }
+
+    /**
+     * Disposes of the entities resources
+     */
+    @Override
+    public void dispose() {
+
+    }
 }

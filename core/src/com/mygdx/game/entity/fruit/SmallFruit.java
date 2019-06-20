@@ -21,4 +21,12 @@ public class SmallFruit extends Fruit {
     public SmallFruit(float x, float y) {
         super(AssetProvider.instance().getAsset(AssetProvider.SMALL_FRUIT, Texture.class), x, y, LENGTH_VALUE, SCORE_VALUE);
     }
+
+    /**
+     * Disposes of the entities resources
+     */
+    @Override
+    public void dispose() {
+
+    }
 }

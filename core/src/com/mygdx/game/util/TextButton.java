@@ -17,6 +17,16 @@ public class TextButton extends Button {
     }
 
     /**
+     * TextButton constructor
+     * @param text The text
+     */
+    public TextButton(Text text) {
+        super();
+        this.text = text;
+        setCollider(text.getX(), text.getY(), text.getWidth(), text.getHeight());
+    }
+
+    /**
      * Gets the text of the text button
      * @return The text
      */
@@ -34,15 +44,33 @@ public class TextButton extends Button {
         setCollider(text.getX(), text.getY(), text.getWidth(), text.getHeight());
     }
 
+    @Override
+    public void setY(float y) {
+        super.setY(y);
+        text.setY(y);
+    }
+
+    @Override
+    public void setX(float x) {
+        super.setX(x);
+        text.setX(x);
+    }
+
+    @Override
+    public void setLocation(float x, float y) {
+        super.setLocation(x, y);
+        setX(x);
+        setY(y);
+    }
+
     /**
      * Renders the button to the screen
      *
      * @param batch The batch
-     * @param alpha The alpha level of the button
      */
     @Override
-    public void render(SpriteBatch batch, float alpha) {
-
+    public void render(SpriteBatch batch) {
+        text.render(batch);
     }
 
     /**

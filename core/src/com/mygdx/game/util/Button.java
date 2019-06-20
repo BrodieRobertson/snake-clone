@@ -170,12 +170,12 @@ public abstract class Button {
         return collider != null && this.collider.overlaps(collider);
     }
 
+
     /**
      * Renders the button to the screen
      * @param batch The batch
-     * @param alpha The alpha level of the button
      */
-    public abstract void render(SpriteBatch batch, float alpha);
+    public abstract void render(SpriteBatch batch);
 
     /**
      * Updates the state of the button

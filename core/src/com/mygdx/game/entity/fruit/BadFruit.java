@@ -22,4 +22,12 @@ public class BadFruit extends Fruit {
     public BadFruit(float x, float y) {
         super(AssetProvider.instance().getAsset(AssetProvider.BAD_FRUIT, Texture.class), x, y, LENGTH_VALUE, SCORE_VALUE);
     }
+
+    /**
+     * Disposes of the entities resources
+     */
+    @Override
+    public void dispose() {
+
+    }
 }

@@ -27,6 +27,17 @@ public class ImageButton extends Button {
      */
     public ImageButton(Texture image, float x, float y) {
         super(x, y, image.getWidth(), image.getHeight());
+        this.image = image;
+    }
+
+    /**
+     * Renders the button to the screen
+     *
+     * @param batch The batch
+     */
+    @Override
+    public void render(SpriteBatch batch) {
+        batch.draw(image, getX(), getY(), getWidth(), getHeight());
     }
 
     /**
@@ -47,16 +58,6 @@ public class ImageButton extends Button {
         this.setWidth(image.getWidth());
     }
 
-    /**
-     * Renders the button to the screen
-     *
-     * @param batch The batch
-     * @param alpha The alpha level of the button
-     */
-    @Override
-    public void render(SpriteBatch batch, float alpha) {
-
-    }
 
     /**
      * Updates the state of the button

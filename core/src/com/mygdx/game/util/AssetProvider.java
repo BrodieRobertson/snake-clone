@@ -1,6 +1,7 @@
 package com.mygdx.game.util;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.BitmapFontLoader.BitmapFontParameter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
@@ -32,7 +33,11 @@ public class AssetProvider {
     /**
      * Path to the font
      */
-    public static final String FONT = "good_neighbors.fnt";
+    public static final String STANDARD_FONT = "standard_font.fnt";
+    /**
+     * Path to the font
+     */
+    public static final String TITLE_FONT = "title_font.fnt";
 
     /**
      * AssetProvider constructor
@@ -43,8 +48,14 @@ public class AssetProvider {
         manager.load(SMALL_FRUIT, Texture.class);
         manager.load(BIG_FRUIT, Texture.class);
         manager.load(BAD_FRUIT, Texture.class);
-        manager.load(FONT, BitmapFont.class);
+        manager.load(STANDARD_FONT, BitmapFont.class);
+        manager.load(TITLE_FONT, BitmapFont.class);
         manager.finishLoading();
+        BitmapFont standard = manager.get(STANDARD_FONT, BitmapFont.class);
+        standard.getData().setScale(3);
+
+        BitmapFont title = manager.get(TITLE_FONT, BitmapFont.class);
+        title.getData().setScale(7);
     }
 
     /**
